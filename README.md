@@ -8,28 +8,28 @@ The code begins by importing the necessary libraries, including` pandas`, `numpy
 
 ## Identifying Problems
 
-The code focuses on specific columns of interest, such as year, kms_driven, Price, and fuel_type, to identify problems within them. For instance, it checks the unique values of the year column and discovers non-relevant data and the column being of object type. Similarly, it investigates the unique values in kms_driven and Price columns, identifying issues related to non-relevant data and object data type.
+The code focuses on specific columns of interest, such as `year`, `kms_driven`, `Price`, and `fuel_type`, to identify problems within them. For instance, it checks the unique values of the year column and discovers non-relevant data and the column being of object type. Similarly, it investigates the unique values in `kms_driven` and `Price` columns, identifying issues related to non-relevant data and object data type.
 
 ## Data Cleaning Operations
 
-To address the identified problems, the code creates a backup copy of the original DataFrame. It then performs specific cleaning operations for each column. For the Price column, commas are removed using the str.replace() method, and the column is converted to numeric type using pd.to_numeric(). Non-numeric rows are dropped using dropna(), and the column is finally converted to integer type. Similarly, the year column is cleaned by removing non-numeric values and converting it to an integer type.
+To address the identified problems, the code creates a backup copy of the original DataFrame. It then performs specific cleaning operations for each column. For the Price column, commas are removed using the `str.replace()` method, and the column is converted to numeric type using `pd.to_numeric()`. Non-numeric rows are dropped using `dropna()`, and the column is finally converted to integer type. Similarly, the year column is cleaned by removing non-numeric values and converting it to an integer type.
 
 ## Cleaning kms_driven and fuel_type
 
-The code focuses on the kms_driven column, splitting the string values and extracting only the numeric part. It removes commas, filters out non-numeric rows, and converts the column to integer type. Null values in the fuel_type column are removed by excluding the corresponding rows using ~car['fuel_type'].isna().
+The code focuses on the `kms_driven` column, splitting the string values and extracting only the numeric part. It removes commas, filters out non-numeric rows, and converts the column to integer type. Null values in the `fuel_type` column are removed by excluding the corresponding rows using `~car['fuel_type'].isna()`.
 
 ## Modifying name column
-The code modifies the name column by keeping only the first three words using str.split(), str.slice(), and str.join() methods. This ensures that only relevant information is retained.
+The code modifies the name column by keeping only the first three words using `str.split()`, `str.slice()`, and `str.join()` methods. This ensures that only relevant information is retained.
 
 ## Outlier Removal
 
 An outlier is detected in the Price column, and the code filters out rows where the price is greater than or equal to 6 million, resulting in a cleaned DataFrame.
 
 ## Model Building
-The code proceeds to build a regression model for predicting used car prices. The input features (x) are obtained by dropping the Price column, while the target variable (y) is set as the Price column. The dataset is split into training and testing sets using train_test_split(). The model chosen for regression is Linear Regression from the sklearn library. One-hot encoding is applied to categorical columns (name, company, and fuel_type) using OneHotEncoder and make_column_transformer. The regression model is then fitted using the training data.
+The code proceeds to build a regression model for predicting used car prices. The input features (x) are obtained by dropping the Price column, while the target variable (y) is set as the Price column. The dataset is split into training and testing sets using `train_test_split()`. The model chosen for regression is Linear Regression from the sklearn library. One-hot encoding is applied to categorical columns `(name, company, and fuel_type)` using `OneHotEncoder` and `make_column_transformer`. The regression model is then fitted using the training data.
 
 ## Model Evaluation
-The trained model is used to predict the prices for the test data, and the predictions are evaluated using the r2_score metric. Multiple iterations of the train-test split are performed to find the optimal random state for the highest r2_score. The model is retrained using the optimal split and evaluated again. Finally, the trained model is saved using pickle for future use.
+The trained model is used to predict the prices for the test data, and the predictions are evaluated using the `r2_score` metric. Multiple iterations of the train-test split are performed to find the optimal random state for the highest r2_score. The model is retrained using the optimal split and evaluated again. Finally, the trained model is saved using pickle for future use.
 
 
 ## Price Prediction
