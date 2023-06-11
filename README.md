@@ -38,4 +38,5 @@ A sample input is created using the required features, and the trained model is 
 
 In summary, this code demonstrates the data cleaning process for a used car dataset and builds a regression model for predicting car prices. It highlights the steps involved in handling null values, converting data types, and addressing outliers. The final trained model can be used to predict the price of a used car based on the provided features.
 
+![image](https://github.com/saqib772/Car_Price_Prediction/assets/121972215/c3924fb6-b5b8-48c2-bae1-d9a812fb8847)
 
